@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { OrderService } from '../../../services/order.service';
+import { ActivatedRoute } from '@angular/router';
+import { OrderModel } from 'src/app/models/order.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.scss']
+  styleUrls: ['./order-list.component.scss'],
 })
 export class OrderListComponent implements OnInit {
+  list: Observable<OrderModel[]>;
 
-  orders: Observable<any[]>;
+  constructor(private route: ActivatedRoute) {}
 
-  constructor(
-    private orderService: OrderService
-  ) {
-    this.orders = orderService.getOrders();
+  ngOnInit() {
+    this.list = this.route.data.pipe(map((data) => data.list));
   }
-
-  ngOnInit() {}
-
 }

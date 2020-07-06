@@ -1,1 +1,25 @@
-<p>order-detail works!</p>
+<div class="block" *ngIf="details | async as order; else loading">
+  <div class="col-wrapper">
+    <div class="col-6">
+      <h2 class="block-subtitle">Order</h2>
+      <div class="block-paragraph">
+        <div>Number: {{ order.number }}</div>
+        <div>From: {{ order.from }}</div>
+        <div>To: {{ order.to }}</div>
+        <div>Price: {{ order.price }}€</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="block-paragraph">
+        <img src="/assets/images/crate.png" alt="Convelio crate" />
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="block">
+    <div class="block-paragraph">
+      Loading ...
+    </div>
+  </div>
+</ng-template>

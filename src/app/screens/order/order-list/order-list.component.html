@@ -10,13 +10,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let order of orders | async" class="order">
+      <tr *ngFor="let order of list | async" class="order">
         <td class="order-detail --number">
-          <a [routerLink]="[order.id]">{{order.number}}</a>
+          <a [routerLink]="[order.id]">{{ order.number }}</a>
         </td>
-        <td class="order-detail --address">{{order.from}}</td>
-        <td class="order-detail --address">{{order.to}}</td>
-        <td class="order-detail --price">{{order.price}}€</td>
+        <td class="order-detail --address">{{ order.from }}</td>
+        <td class="order-detail --address">{{ order.to }}</td>
+        <td class="order-detail --price">{{ order.price }}€</td>
       </tr>
     </tbody>
   </table>
