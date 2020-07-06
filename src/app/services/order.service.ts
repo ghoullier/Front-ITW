@@ -5,23 +5,18 @@ import { map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderService {
+  constructor(private apiService: ApiService) {}
 
-  constructor(
-    private apiService: ApiService
-  ) {}
-
-  private getOrders(): Observable<any> {
-    return this.apiService.get().pipe(
-      map(res => res.orders)
-    );
+  public getOrders(): Observable<any> {
+    return this.apiService.get().pipe(map((res) => res.orders));
   }
 
   public getOrderById(orderId: string): Observable<any> {
-    return this.apiService.get().pipe(
-      map(res => res.orders.find(order => order.id === orderId))
-    );
+    return this.apiService
+      .get()
+      .pipe(map((res) => res.orders.find((order) => order.id === orderId)));
   }
 }

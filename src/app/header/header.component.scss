@@ -1,8 +1,10 @@
-.header{
-  &-nav{
+@import '../../styles/abstract/variables';
+
+.header {
+  &-nav {
     margin-top: $gutter-size;
 
-    &-link{
+    &-link {
       margin-right: $gutter-size;
     }
   }
