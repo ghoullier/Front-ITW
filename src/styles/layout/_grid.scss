@@ -1,4 +1,4 @@
-.container{
+.container {
   max-width: $container-max-width;
   width: 100%;
   margin: auto;
@@ -9,7 +9,7 @@
   }
 }
 
-.col-wrapper{
+.col-wrapper {
   display: flex;
   flex-wrap: wrap;
   @include horizontal-margin(-$gutter-size);
@@ -21,10 +21,16 @@
 }
 
 @for $i from 1 through $nb-of-columns {
-  .col-#{$i}{
+  .col-#{$i} {
     position: relative;
     flex: 0 0 $i/$nb-of-columns * 100%;
     max-width: $i/$nb-of-columns * 100%;
     @include horizontal-padding($gutter-size);
+
+    @include respond-to(small) {
+      flex: 0 0 100%;
+      max-width: 100%;
+      @include horizontal-margin(-$gutter-size/2);
+    }
   }
 }
